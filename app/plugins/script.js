@@ -4,6 +4,8 @@ const maxHeight = 350;
 let columnQuantity = 20;
 let time = 300;
 const field = document.querySelector(".field");
+let arrayText = document.querySelector(".array");
+let arraySorted = document.querySelector(".arraySorted");
 
 var slider = document.querySelector("#myRange");
 var output = document.querySelector("#demo");
@@ -32,9 +34,13 @@ function calcArray() {
     }
     for (i = 0; i < array.length; i++) {
         array[i] = array[i] * ((i + 1) * ((0.6 / array.length)));
+
     }
+
     generateColumns(array);
     shuffle(array);
+    arraySorted.textContent = ``;
+    arrayText.textContent = ` ${array}`;
     if (timerId) {
         clearTimeout(timerId);
     }
@@ -73,14 +79,22 @@ function showArray(array) {
 function swap(num1, num2) {
     field.childNodes[num1].style.background = 'green';
     field.childNodes[num2].style.background = 'green';
-    // field.childNodes[num1].setAttribute('style', `transform: translate(50px, 54px)`);
+    // let rowWidth = field.childNodes[num2].clientWidth;
+    // field.childNodes[num1].style["transform"] = `translateX(${rowWidth}px)`;
+    // field.childNodes[num2].style["style"] = `transform: translate(-${rowWidth}px, 0px);`;
+    // field.childNodes[num2].style["transition"] = `transform 1000ms`;
+    // field.childNodes[num2].classList.add("anim");
+    // field.childNodes[num1].classList.add("anim");
     let clone = field.childNodes[num1].cloneNode(true);
     field.childNodes[num1].replaceWith(field.childNodes[num2]);
     field.childNodes[num2 - 1].after(clone);
+    // field.childNodes[num2].classList.add("animUp");
+    // field.childNodes[num1].classList.add("animUp");
+
+
 }
 
 let timerId;
-
 function timer(ms) {
     return new Promise(res => { timerId = setTimeout(res, ms) });
 }
@@ -95,7 +109,9 @@ async function bubbleSort(array) {
                 temp = x[i];
                 x[i] = x[i + 1];
                 x[i + 1] = temp;
+
                 swap(i, i + 1);
+
                 await timer(time);
                 field.childNodes[i + 1].style.background = '#8458B3';
                 field.childNodes[i].style.background = '#8458B3';
@@ -107,5 +123,6 @@ async function bubbleSort(array) {
         n--;
 
     } while (swapp);
+    arraySorted.textContent = ` ${x}`;
 }
 calcArray();
