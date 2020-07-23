@@ -1,0 +1,98 @@
+@import url(https://fonts.googleapis.com/css?family=Didact+Gothic|Comfortaa:400,700&subset=latin,cyrillic);
+:root{
+    --column-size: 200px;
+}
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Comfortaa', Arial;
+}
+body{
+    display: flex;  
+    flex-direction: column;
+    height: 100vh;
+}
+
+.navbar_position{
+    display: inherit;
+    width: 100%;
+    height: 50px; 
+    background: rgb(255, 255, 255);
+    align-items: center;
+}
+.navbar{
+    background-image: linear-gradient(to top right, rgb(101, 115, 255), rgb(111, 114, 247), rgb(120, 114, 239), rgb(130, 113, 231), rgb(139, 112, 223), rgb(149, 111, 215), rgb(158, 111, 208), rgb(168, 110, 200), rgb(177, 109, 192), rgb(187, 108, 184), rgb(196, 108, 176), rgb(206, 107, 168));
+    color: white;
+}
+.navbar__button_play{
+    cursor:pointer;
+    margin-left: 5px;
+}
+
+.field{
+    display: inherit;
+    width: 660px;
+    height: 400px;
+    margin: auto;
+    margin-top: 10%;
+    align-items: flex-start;
+}
+
+.field__column{
+    position:relative;
+    width: 50px;
+    height: 350px;
+    border-radius: 4px;
+    background: #8458B3;
+    margin: 8px;
+    margin-top: auto;
+}
+
+.slidecontainer {
+    width: 100%;
+  }
+  
+  .slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+  }
+  
+  .slider:hover {
+    opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #531253d0;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #531253d0;
+    cursor: pointer;
+  }
+  
+footer{
+    background:  #531253d0;
+    box-shadow: 0 -200px 100px -120px rgba(43, 159, 226, 0.418) inset;
+    animation: background 20s infinite alternate;
+    color:white;
+}
+
+@keyframes background {
+    50% {
+      background: skyblue;
+      box-shadow: 0 -200px 100px -100px rgba(156, 50, 205, 0.781) inset;
+    }
+  }
