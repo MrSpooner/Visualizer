@@ -16,11 +16,12 @@
         <div class="navbar__logo navbar__button_play">рестарт</div>
     </div>
 
-    <div class="slidecontainer">
+    <form action="" class="slidecontainer" onchange="calcArray()">
         <p>Количество: <span id="demo"></span></p>
-        <input type="range" min="10" max="25" value="10" class="slider" id="myRange" onchange="calcArray()">
-
-    </div>
+        <input type="range" min="10" max="25" value="10" class="slider" id="myRange">
+        <p>Скорость: <span id="time"></span></p>
+        <input type="range" min="100" max="1000" value="100" class="slider" id="myTime">
+    </form>
 
     <div class="field"></div>
 </body>
