@@ -13,7 +13,6 @@
 
     <div class="navbar navbar_position">
         <div class="navbar__logo">Bubble-Sort</div>
-        <!-- <div class="navbar__logo navbar__button_play">рестарт</div> -->
     </div>
 
     <form action="" class="slidecontainer" onchange="calcArray()">
@@ -29,6 +28,19 @@
         <span class="array"></span>
         <span>Сортированный массив:</span>
         <span class="arraySorted"></span>
+    </div>
+    <div class="guide">
+        <span>На данной странице реализована сортировка массива пузырьком. Ниже она представлена в двух вариантах:
+            графическом и текстовом<br>
+            Для повторного запуска сортировки достаточно использовать любой из ползунков, представленных на верхней
+            части страницы<br>
+            Первый ползунок отвечает за количество элементов в массиве, второй за скорость сортировки(мс/цикл)<br>
+            <span style="color:#3D9970; font-weight: bold;">Зеленым</span> отмечены столбцы, которые отсортированы<br>
+            <span style="color:#8458B3; font-weight: bold;">Фиолетовым</span> отмечены столбцы, которые
+            несортированы<br>
+            <span style="color:#C3447A; font-weight: bold;">Красные</span> столбцы используются алгоритмом для сравнения
+        </span>
+        <p class="guide__x" onclick="hide()">Закрыть</p>
     </div>
 
 </body>

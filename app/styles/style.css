@@ -37,7 +37,26 @@ body{
     margin-top: 10%;
     align-items: flex-start;
 }
-
+.guide{
+position: absolute;
+margin-top: 110px;
+width: 900px;
+margin-left: 27%;
+border-radius: 1px;
+border-style: solid;
+border-radius: 5px;
+border-color:  rgb(158, 111, 208);
+z-index: 1;
+background-color: white;
+}
+.guide__x{
+    position:relative;
+    margin-left: 42%;
+    font-weight: bold;
+}
+.guide__x:hover{
+cursor:pointer;
+}
 .field__column{
     position:relative;
     width: 50px;
@@ -53,12 +72,12 @@ body{
     margin: auto;
     margin-top: 10px;
     margin-bottom: 10px;
-    border-color:  rgb(158, 111, 208);
+    border-color:  rgb(149, 111, 215);
     border-radius: 1px;
     border-style: solid;
     border-radius: 5px;
     padding: 10px;
-    height: 110px;
+    height: 80px;
 }
 /* .animUp{
     animation: animUp 500ms ease-in-out;

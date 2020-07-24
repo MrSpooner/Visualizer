@@ -1,18 +1,12 @@
 'use strict'
 let array = [];
 const maxHeight = 350;
-let columnQuantity = 20;
-let time = 300;
+let columnQuantity = 20, time = 300;
 const field = document.querySelector(".field");
-let arrayText = document.querySelector(".array");
-let arraySorted = document.querySelector(".arraySorted");
-
-var slider = document.querySelector("#myRange");
-var output = document.querySelector("#demo");
-var sliderTime = document.querySelector("#myTime");
-var outputTime = document.querySelector("#time");
-
-var form = document.querySelector('.slidecontainer');
+let arrayText = document.querySelector(".array"), arraySorted = document.querySelector(".arraySorted")
+    , slider = document.querySelector("#myRange"), output = document.querySelector("#demo")
+    , sliderTime = document.querySelector("#myTime"), outputTime = document.querySelector("#time")
+    , form = document.querySelector('.slidecontainer');
 form.addEventListener('change', function () {
     output.innerHTML = slider.value;
     slider.oninput = function () {
@@ -23,7 +17,7 @@ form.addEventListener('change', function () {
         outputTime.innerHTML = this.value;
     }
 });
-
+//Инициализация и заполнение массива
 function calcArray() {
     field.querySelectorAll('*').forEach(n => n.remove());
     array = [];
@@ -33,10 +27,9 @@ function calcArray() {
         array.push(maxHeight);
     }
     for (i = 0; i < array.length; i++) {
-        array[i] = array[i] * ((i + 1) * ((0.6 / array.length)));
+        array[i] = Math.round(array[i] * ((i + 1) * ((0.6 / array.length))));
 
     }
-
     generateColumns(array);
     shuffle(array);
     arraySorted.textContent = ``;
@@ -45,9 +38,8 @@ function calcArray() {
         clearTimeout(timerId);
     }
     bubbleSort(array);
-
 }
-
+//Добавление столбцов в DOM
 function generateColumns(array) {
     for (let i = 0; i < array.length; i++) {
         let fieldCol = document.createElement('div');
@@ -55,7 +47,7 @@ function generateColumns(array) {
         field.appendChild(fieldCol);
     }
 }
-
+//Перемешивание элементов массива
 function shuffle(array) {
     var j, x;
     for (var i = array.length; i; i--) {
@@ -66,7 +58,7 @@ function shuffle(array) {
     }
     showArray(array);
 }
-
+//Изменение высоты столбиков
 function showArray(array) {
     let columns = document.querySelectorAll(".field__column");
     let i = 0;
@@ -75,30 +67,20 @@ function showArray(array) {
         i++;
     });
 }
-
+//Функция меняет стоблики местами
 function swap(num1, num2) {
-    field.childNodes[num1].style.background = 'green';
-    field.childNodes[num2].style.background = 'green';
-    // let rowWidth = field.childNodes[num2].clientWidth;
-    // field.childNodes[num1].style["transform"] = `translateX(${rowWidth}px)`;
-    // field.childNodes[num2].style["style"] = `transform: translate(-${rowWidth}px, 0px);`;
-    // field.childNodes[num2].style["transition"] = `transform 1000ms`;
-    // field.childNodes[num2].classList.add("anim");
-    // field.childNodes[num1].classList.add("anim");
+    field.childNodes[num1].style.background = '#C3447A';
+    field.childNodes[num2].style.background = '#C3447A';
     let clone = field.childNodes[num1].cloneNode(true);
     field.childNodes[num1].replaceWith(field.childNodes[num2]);
     field.childNodes[num2 - 1].after(clone);
-    // field.childNodes[num2].classList.add("animUp");
-    // field.childNodes[num1].classList.add("animUp");
-
-
 }
-
+//Таймер для задержки после каждой итерации
 let timerId;
 function timer(ms) {
     return new Promise(res => { timerId = setTimeout(res, ms) });
 }
-
+//Сортировка массива
 async function bubbleSort(array) {
     let swapp, temp;
     let n = array.length - 1, x = array;
@@ -109,20 +91,28 @@ async function bubbleSort(array) {
                 temp = x[i];
                 x[i] = x[i + 1];
                 x[i + 1] = temp;
-
                 swap(i, i + 1);
-
+                arraySorted.textContent = ` ${x}`;
                 await timer(time);
                 field.childNodes[i + 1].style.background = '#8458B3';
                 field.childNodes[i].style.background = '#8458B3';
                 swapp = true;
             }
-
+        }
+        field.childNodes[n].style.background = '#3D9970';
+        n--;
+        if (swapp == false) {
+            for (n; n > -1; n--) {
+                field.childNodes[n].style.background = '#3D9970';
+            }
         }
 
-        n--;
 
     } while (swapp);
-    arraySorted.textContent = ` ${x}`;
+}
+//Скрытие всплывающего окна
+function hide() {
+    let window = document.querySelector(".guide");
+    window.style.display = 'none';
 }
 calcArray();
